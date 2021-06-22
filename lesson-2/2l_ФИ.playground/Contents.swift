@@ -73,3 +73,66 @@ func findPrimeNumbers(in array: [Int]) -> [Int] {
 print(findPrimeNumbers(in: Array(2...99)))
 
 
+// MARK: - Фибоначчи массив 2 версия (сделано после просмотра разбора преподавателем)
+
+func fibonacci(count: Int) -> [Int] {
+    var array: [Int] = []
+    switch count {
+    case 1:
+        let f0: Int = 0
+        array.append(f0)
+        return array
+    case 2:
+        let f0: Int = 0
+        let f1: Int = 1
+        array.append(f0)
+        array.append(f1)
+        return array
+    default:
+        let f0: Int = 0
+        let f1: Int = 1
+        array.append(f0)
+        array.append(f1)
+        
+        var n = 2
+        while n < count + 2 {
+            let n1 = array[n - 1] + array[n - 2]
+            array.append(n1)
+            n += 1
+        }
+        return array
+    }
+}
+
+print(fibonacci(count: 50))
+
+// MARK: - Массив из 100 элементов различными простыми числами вариант 2 (сделано после просмотра разбора преподавателем) 
+
+func isMultiple(_ num: Int, divider: Int) -> Bool {
+    return num % divider == 0
+}
+
+var integers: [Int] = []
+
+while integers.count != 10 {
+    integers.append(integers.count + 2)
+}
+
+print(integers)
+
+var p: Int
+var index = 0
+
+while index < integers.count - 1 {
+    p = integers[index]
+    
+    for num in integers {
+        print("num = \(num) ---- p = \(p)")
+        if num != p && isMultiple(num, divider: p) {
+            integers.remove(at: integers.firstIndex(of: num)!)
+        }
+    }
+    index += 1
+}
+
+print(integers)
